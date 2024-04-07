@@ -12,12 +12,12 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 
 ---
 
-# Título del Proyecto
+# SoccerSocialHub
 
-#### Curso Escolar 20XX-20XX
-#### Autor: [Nombre del alumno autor](Enlace a su cuenta de gitHub)
+#### Curso Escolar 2023-2024
+#### Autor: [Abel Garcia Sanchez]([Enlace a su cuenta de gitHub](https://github.com/Abelgs716))
 #### Tutor: [Nombre del profesor tutor](Enlace a su cuenta de gitHub)
-#### Fecha de Inicio: DD-MM-YYYY
+#### Fecha de Inicio: 1-04-2024
 #### Fecha de Finalización: DD-MM-YYYY
 
 ## Breve descripción del proyecto
