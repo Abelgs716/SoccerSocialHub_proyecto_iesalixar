@@ -4,8 +4,13 @@ USE SoccerSocialHub;
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100) UNIQUE,
-    rol ENUM('ROLE_USER', 'ROLE_ADMIN') NOT NULL,
     password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE user_rol (
+    usuario_id INT PRIMARY KEY,
+    roles_usuario ENUM('ROLE_USER', 'ROLE_ADMIN') NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES users(id)
 );
 
 CREATE TABLE teams (
@@ -35,6 +40,7 @@ CREATE TABLE fields (
 
 CREATE TABLE reviews (
     reviews_id INT PRIMARY KEY AUTO_INCREMENT,
+    description VARCHAR(100) NOT NULL,
     fields_id INT,
     team_id INT,
     FOREIGN KEY (fields_id) REFERENCES fields(fields_id),
