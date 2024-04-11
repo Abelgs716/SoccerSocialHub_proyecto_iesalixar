@@ -42,13 +42,13 @@ CREATE TABLE reviews (
     reviews_id INT PRIMARY KEY AUTO_INCREMENT,
     description VARCHAR(100) NOT NULL,
     fields_id INT,
-    players_id INT,
+    users_id INT,
     FOREIGN KEY (fields_id) REFERENCES fields(fields_id),
-    FOREIGN KEY (players_id) REFERENCES players(players_id)
+    FOREIGN KEY (users_id) REFERENCES users(id)
 );
 
 CREATE TABLE matches  (
-    id_partido INT PRIMARY KEY AUTO_INCREMENT,
+    matches_id INT PRIMARY KEY AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
     team1 INT,
