@@ -1,0 +1,29 @@
+
+
+<div class="parent">
+    <h2 class=" text-white titulo">Bienvenido a SoocerSocialClub</h2>
+    <div class="main">  	
+        <input type="checkbox" id="chk" aria-hidden="true">
+   
+            <div class="signup">
+                <form (ngSubmit)="onSubmit()">
+                    <label for="chk" aria-hidden="true">Sing up </label>
+                    <input type="text" name="txt" placeholder="User name" required="">
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="pswd" placeholder="Password" required="">
+                    <button>Sign up</button>
+                </form>
+            </div>
+    
+            <div class="login">
+                <form (ngSubmit)="onSubmit()">
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="password">
+                    <button>Login</button>
+                </form>
+            </div>
+    </div>
+</div>
+
+   
