@@ -35,7 +35,7 @@ public class UsuarioService {
 
     public Usuario getUsuariorById(Long id) {
         Optional<Usuario> trabajadorOptional = usuarioRepository.findById(id);
-        return trabajadorOptional.orElseThrow(() -> new CustomException("El trabajador con ID " + id + " no existe"));
+        return trabajadorOptional.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
     }
 
     public List<Usuario> getAllAdmins() {
