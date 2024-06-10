@@ -1,0 +1,300 @@
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel-item-custom {
+  border-bottom: 1px solid #cccccc;
+  background-color: #cccccc;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* Ajusta la altura según sea necesario */
+}
+
+.carousel-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  max-height: 500px;
+  background-size: 50% auto; /* Cambia a 'contain' para que la imagen se ajuste sin recortarse */
+  background-position: center; /* Alinea la imagen a la izquierda */
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: flex-end; /* Coloca el texto a la derecha */
+  color: white;
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.text-content {
+  z-index: 1;
+  padding: 15px;
+  background: rgba(0, 74, 95, 0.8); /* Fondo del texto */
+  border-radius: 10px;
+  max-width: 40%; /* Limita el ancho del contenedor del texto */
+  margin-right: 300px;
+}
+
+.text-content h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  margin-bottom: 20px;
+}
+
+.text-content .ver-mas {
+  background-color: #ff8350;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.text-content .ver-mas:hover {
+  background-color: #004a5f;
+  color: #ffffff;
+}
+
+
+.left-column {
+  background-color: #004a5f;
+  color: #ffffff;
+  padding: 10px; /* Reduce el padding para disminuir el tamaño */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Alinea todos los elementos al centro horizontalmente */
+  width: 30%; /* Reduce el ancho */
+  font-size: 10px;
+  margin-right: 5px;
+}
+
+.left-column h2 {
+  font-size: 16px; /* Reduce el tamaño de la fuente */
+  text-align: center;
+}
+
+.left-column p {
+  margin: 10px 0;
+  margin-left: 10px !important; /* Desplaza el párrafo un poco a la derecha con !important */
+  text-align: center;
+}
+
+.left-column .ver-mas {
+  background-color: #ff8350;
+  color: white;
+  border: none;
+  padding: 4px; /* Reduce el padding */
+  border-radius: 15%;
+  width: 60px; /* Reduce el tamaño del botón */
+  height: 25px; /* Reduce la altura del botón */
+  cursor: pointer;
+  margin: 10px auto; /* Centra el botón horizontalmente */
+  font-size: 12px;
+  transition: background-color 0.3s, color 0.3s; /* Añade transición para suavizar el cambio de estilo */
+}
+
+.left-column .ver-mas:hover {
+  background-color: #004a5f; /* Color de fondo al pasar el cursor */
+  color: #ffffff; /* Color del texto al pasar el cursor */
+}
+
+.right-column {
+  width: 70%; /* Ajusta el ancho */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Asegura que la imagen no se repita */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagenCarrusel {
+  display: none; /* Oculta la imagen ya que se usa como background */
+}
+
+.carousel-content img {
+  max-width: 200px; /* Reduce el tamaño máximo de la imagen */
+  max-height: 250px; /* Reduce la altura máxima de la imagen */
+  width: auto;
+  height: auto;
+}
+
+.custom-card {
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.content-container {
+  display: flex;
+  align-items: flex-start; /* Cambiado de center a flex-start */
+}
+
+.custom-thumbnail {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+  flex-shrink: 0; /* Evita que la imagen se reduzca */
+}
+
+.text-container {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+
+.text-container p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #666;
+  word-wrap: break-word; /* Permite que el texto se divida en líneas */
+}
+
+.text-container h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px; /* Añadido margen superior para separar los botones del texto */
+}
+
+/* Botones personalizados */
+.ion-button {
+  --background: #ff8350;
+  --ion-color-base: #ff8350;
+  --ion-color-base-rgb: 255, 131, 80;
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 255, 255, 255;
+  --border-radius: 4px;
+  --background-activated: transparent;
+  --border-color: transparent;
+  --box-shadow: none;
+  --transition: none;
+  color: white;
+}
+
+.ion-button:hover,
+.ion-button:focus {
+  --background: #ff8350;
+  --box-shadow: none;
+}
+
+.colorN {
+  --background: #004a5f !important;
+  --padding-start: 6px;
+  --padding-end: 6px;
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+  font-size: 10px;
+  height: 24px;
+  min-width: 50px;
+}
+
+/* PAGINACION ESTILOS */
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.colorPaginacion {
+  --background: #004a5f;
+}
+
+.pagination-controls {
+  display: flex;
+  list-style: none; /* Elimina los estilos de lista */
+  padding: 0;
+}
+
+.pagination-controls .ngx-pagination {
+  display: inline-block;
+}
+
+.pagination-controls .ngx-pagination .current {
+  padding: 5px 10px;
+  --backgroud: #004a5f;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination-controls .ngx-pagination a {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-controls .ngx-pagination a:hover {
+  background-color: #e9ecef;
+}
+
+/* Botones más pequeños en dispositivos móviles */
+@media screen and (max-width: 767px) {
+  .colorN {
+    --padding-start: 2px;
+    --padding-end: 2px;
+    --padding-top: 2px;
+    --padding-bottom: 2px;
+    font-size: 7px;
+    height: 17px; /* Aumenté la altura a 20px */
+    min-width: 50px;
+  }
+  .carousel-content {
+
+    align-items: end;
+    background-size: 100% auto;
+    
+
+  .text-content {
+    top: 100px;
+    min-width: 150px;
+
+    right: 5%;
+    position: absolute;
+   
+    margin-right: 0 !important;
+    h2{
+      font-size: 14px;
+    }
+  }
+}
+}
+
+.ion-select-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px; /* Ajusta este valor para colocar el select debajo del carrusel */
+  margin-right: 20px;
+  width: 100%;
+}
+
+.ion-select-wrapper ion-select {
+  width: 150px; /* Ajusta el ancho según sea necesario */
+}

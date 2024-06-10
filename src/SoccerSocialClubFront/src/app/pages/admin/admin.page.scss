@@ -1,0 +1,134 @@
+.background-content {
+ background-image: url('../../../assets/imgs/fondoAdmin.png');
+  background-size: cover; /* Cubre todo el contenido */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita repeticiones */
+  width: 100%;
+  height: 100vh; /* Asegura que cubre todo el viewport */
+  position: relative;
+}
+
+.custom-card {
+  max-width: 700px; /* Ancho máximo de la tarjeta */
+  margin: 20px auto; /* Centra la tarjeta y añade margen */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombras sutiles */
+}
+
+ion-card-header {
+  background-color: #f5f5f5; /* Color de fondo */
+  padding: 10px; /* Espaciado interno */
+}
+
+.orange-divider {
+  height: 3px; /* Altura de la línea */
+  background-color: #eb603f; /* Color naranja */
+  width: 100%; /* Abarca todo el ancho de la tarjeta */
+  margin-bottom: 10px; /* Espacio por debajo de la línea */
+}
+
+.upper-part {
+  padding-bottom: 10px; /* Espaciado en la parte inferior */
+}
+
+.horizontal-layout {
+  display: flex; /* Alinea elementos en fila */
+  justify-content: flex-start; /* Alinea hacia la izquierda */
+  gap: 20px; /* Espacio entre elementos */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.lower-part {
+  display: flex; /* Para colocar elementos en fila */
+  justify-content: space-between; /* Espacio entre correo y botones */
+  align-items: center; /* Alineación vertical */
+}
+
+.action-buttons {
+  display: flex; /* Para mantener los botones en fila */
+  gap: 10px; /* Espacio entre botones */
+}
+
+ion-button {
+  padding: 5px; /* Espaciado interno */
+}
+
+ion-icon {
+  font-size: 24px; /* Tamaño del icono */
+}
+
+.horizontal-layout {
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos en los extremos */
+}
+
+.das {
+  margin-left: auto; /* Mueve el elemento hacia la derecha */
+}
+
+.colorsoccer
+{
+  color:#eb603f;
+}
+
+.btn-rojo {
+  background-color: red !important;
+  border-color: red !important;
+  color: white !important;
+}
+ 
+.btn-verde {
+  background-color: green !important;
+  border-color: green !important;
+  color: white !important;
+}
+
+// PAGINACION ESTILOS
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.colorPaginacion{
+  --background: #004a5f;
+}
+
+.pagination-controls {
+  display: flex;
+  list-style: none; /* Elimina los estilos de lista */
+  padding: 0;
+}
+
+.pagination-controls .ngx-pagination {
+  display: inline-block;
+}
+
+.pagination-controls .ngx-pagination .current {
+  padding: 5px 10px;
+  --backgroud:#004a5f;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination-controls .ngx-pagination a {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.pagination-controls .ngx-pagination a:hover {
+  background-color: #e9ecef;
+}
+
+
+
+
+

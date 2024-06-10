@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+
+  </ion-header>
+
+  <div class = "imagenFondo">
+    
+    <div class = "div-centrado">
+
+      <h2 class="bienvenido">
+        Iniciar Sesion
+      </h2>
+  
+      <form class="formu" (ngSubmit)="login()" [formGroup]="loginForm">
+        <label class="labels">Correo Electrónico</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="text" placeholder="Correo electrónico" formControlName="nombreUsuario" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(nombreUsuario!.dirty || nombreUsuario!.touched) && nombreUsuario!.errors"
+                >Email es invalido o Vacio</ion-note>
+        </div>
+        <label class="labels">Contraseña</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="password" placeholder="Introduce tu contraseña" formControlName="password" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(password!.dirty || password!.touched) && password!.errors"
+                >La contraseña tiene que tener mas de 6 digitos</ion-note>
+        </div>
+        <button class="position-absolute start-50 translate-middle mt-3 btn btn-outline-primary" type="submit"
+          expand="block">Iniciar Sesión</button>
+      </form>
+
+      
+      <a href = "/register" class="mt-4 preguntas">¿No tienes cuenta?</a>
+      <a routerLink = "" class="preguntas">¿Recuperar Contraseña?</a>
+      
+      
+    </div>
+  
+        <ion-buttons class="volver" slot="start">
+          <ion-back-button defaultHref="/" ></ion-back-button>
+        </ion-buttons>
+  </div>
+ 
+</ion-content>

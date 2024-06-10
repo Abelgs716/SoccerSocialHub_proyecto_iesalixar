@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="background-content">
+    <ng-container *ngFor="let evento of eventos | paginate: { itemsPerPage: 10, currentPage: p }">
+      <ion-card class="custom-card">
+        <ion-card-header>
+          <div class="header-content">
+            <ion-card-title>{{ evento.nombreEvento }}</ion-card-title>
+            <p class="event-date">{{ evento.fechaInicioEvento | date: 'dd/MM/yyyy' }}</p>
+          </div>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="content-area">
+            <img [src]="evento.imagen" alt="Imagen del evento" class="event-image"/>
+            <div class="text-content">
+              <p class="event-author">Autor: {{ trabajadoresMap[evento.idCreador]?.nombre }} {{ trabajadoresMap[evento.idCreador]?.apellidos }}</p>
+              <p class="event-attendees"><ion-icon name="people"></ion-icon> {{ evento.maxPersonas }}</p>
+              <p class="event-description">{{ evento.descripcion }}</p>
+              <p>{{ evento.descripcionLarga }}</p>
+              <div class="action-buttons">
+                <ion-button fill="clear" class="accept-button" (click)="confirmarAceptacion(evento.id)">
+                  <ion-icon name="checkmark-circle"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" class="reject-button" (click)="confirmarRechazo(evento.id)">
+                  <ion-icon name="close-circle"></ion-icon>
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+    <div class="pagination-wrapper">
+      <ion-button class="colorPaginacion" *ngIf="p > 2" (click)="changePage(1)"><<</ion-button>
+    
+      <ion-button class="colorPaginacion" *ngFor="let page of pagesToShow" [ngClass]="{'btn-destacar': page === p}" (click)="changePage(page)">
+        {{ page }}
+      </ion-button>
+      
+    
+      <ion-button class="colorPaginacion" *ngIf="p < totalPages - 1" (click)="changePage(totalPages)">>></ion-button>
+    </div>
+  </div>
+</ion-content>
+<app-header></app-header>

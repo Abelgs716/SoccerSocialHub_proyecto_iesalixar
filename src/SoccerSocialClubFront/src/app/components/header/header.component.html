@@ -1,0 +1,13 @@
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" [activated]="activateFab">
+    <ion-fab-button class="custom-icon1"></ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button *ngIf="isLoggedIn" class="custom-icon2" [routerLink]="['/home']"></ion-fab-button>
+      <ion-fab-button *ngIf="isLoggedIn" class="custom-icon3" (click)="cambioBool1()"></ion-fab-button>
+      <ion-fab-button *ngIf="isLoggedIn && isAdmin && showAdditionalButtons" class="custom-icon6" [routerLink]="['/admin']"></ion-fab-button>
+      <ion-fab-button *ngIf="isLoggedIn && isAdmin && showAdditionalButtons" class="custom-icon7" [routerLink]="['/admin-control-eventos']"></ion-fab-button>
+      <ion-fab-button *ngIf="isLoggedIn" class="custom-icon4" [routerLink]="['/event']"></ion-fab-button>
+      <ion-fab-button *ngIf="isLoggedIn || !isLoggedIn" class="custom-icon5" (click)="logout()"></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

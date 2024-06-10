@@ -1,0 +1,70 @@
+ion-card {
+  margin: 0;
+  padding: 0;
+}
+
+.evento-img {
+  width: 50%; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+h1 {
+  font-size: 24px;
+  margin: 16px 0;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+ion-card-content {
+  padding-top: 0;
+}
+
+.participants {
+  text-align: right;
+  font-size: 10px;
+  padding-right: 3px;
+  margin-bottom: 5px;
+}
+
+.icon-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px; /* Ajusta el espacio entre los botones */
+}
+
+.icono-boton {
+  background-color: transparent; /* Fondo transparente por defecto */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.icono-boton:hover {
+  background-color: #005066;
+}
+
+.icono-boton:active {
+  background-color: #e53310;
+}
+
+.icon-buttons .icono-img {
+  width: 24px;
+  height: 24px;
+}
+
+.custom-button {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  --background:#fe6645;
+}
+
+ion-input {
+  margin: 16px;
+}

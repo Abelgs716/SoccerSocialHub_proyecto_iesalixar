@@ -1,0 +1,74 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+
+  </ion-header>
+
+  <div class = "imagenFondo">
+    
+    <div class = "div-centrado">
+
+      <h2 class="bienvenido">
+        Crear Cuenta
+      </h2>
+     
+      <form class="formu" (ngSubmit)="register()" [formGroup]="registerForm">
+        <label class="labels">Correo Electrónico</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="email" placeholder="Introduce tu Email" formControlName="email" class="form-control"><br/>
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(email!.dirty || email!.touched) && email!.errors"
+                >Email es invalido o Vacio</ion-note>
+        </div>
+      
+        <label class="labels">Nombre de Usuario</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="text" placeholder="Introduce nombre de Usuario" formControlName="nombreUsuario" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(nombreUsuario!.dirty || nombreUsuario!.touched) && nombreUsuario!.errors"
+                >nombre de Usuario es invalido o Vacio</ion-note>
+        </div>
+      
+        <label class="labels">Nombre</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="text" placeholder="Introduce tu Nombre Completo" formControlName="nombre" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(nombre!.dirty || nombre!.touched) && nombre!.errors"
+                >El nombre no puede ser vacio</ion-note>
+        </div>
+      
+        <label class="labels">Apellido</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="text" placeholder="Introduce tu apellido" formControlName="apellidos" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(apellidos!.dirty || apellidos!.touched) && apellidos!.errors"
+                >El apellido no puede ser vacio</ion-note>
+        </div>
+      
+        <label class="labels">Contraseña</label>
+        <div class="input-group ion-margin-bottom item1">
+          <input type="password" placeholder="Introduce tu Contraseña" formControlName="password" class="form-control">
+        </div>
+        <div>
+          <ion-note class = "text-danger" slot="error" *ngIf="(password!.dirty || password!.touched) && password!.errors"
+                >La contraseña tiene que tener mas de 6 digitos</ion-note>
+        </div>
+      
+        <button class="position-absolute start-50 translate-middle mt-4 btn btn-outline-primary" type="submit"
+          expand="block">Registrarse</button>
+      </form>
+
+      
+      <a href = "/login" class="mt-5 preguntas">¿Ya tienes cuenta?</a><br/>
+      
+
+    </div>
+    <ion-buttons class="volver" slot="start">
+      <ion-back-button defaultHref="/" ></ion-back-button>
+    </ion-buttons>
+  </div>
+
+</ion-content>

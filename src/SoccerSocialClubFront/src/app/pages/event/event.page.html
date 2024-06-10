@@ -1,0 +1,106 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <form [formGroup]="eventForm" (ngSubmit)="crearEvento()">
+      <div class="event-container">
+        <div class="event-image">
+          <img src="../../../assets/imgs/360_F_180311099_Vlj8ufdHvec4onKSDLxxdrNiP6yX4PnP.jpg" alt="Imagen del evento" class="img-fluid" (click)="triggerFileInput()">
+          <input type="file" id="fileInput" accept="image/*" (change)="onFileSelected($event)" hidden>
+          <p class="event-created-by"><strong>Inserta imagen arriba:</strong></p>
+        </div>
+        <div class="event-details">
+          <p class="event-title"><u><strong>Nombre del Partido</strong></u></p>
+          <ion-card>
+            <ion-card-content>
+              <ion-input placeholder="Introduce el nombre del Partido" formControlName="nombreEvento"></ion-input>
+              <div *ngIf="eventForm.controls['nombreEvento'].invalid && (eventForm.controls['nombreEvento'].dirty || eventForm.controls['nombreEvento'].touched)">
+                <div *ngIf="eventForm.controls['nombreEvento'].errors?.['required']">Nombre del Partido es requerido.</div>
+                <div *ngIf="eventForm.controls['nombreEvento'].errors?.['whitespace']">Nombre del Partido no puede estar vacío.</div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <p><strong>Descripción Breve</strong></p>
+          <ion-card>
+            <ion-card-content>
+              <ion-textarea rows="3" placeholder="Descripción breve del Partido" formControlName="descripcion"></ion-textarea>
+              <div *ngIf="eventForm.controls['descripcion'].invalid && (eventForm.controls['descripcion'].dirty || eventForm.controls['descripcion'].touched)">
+                <div *ngIf="eventForm.controls['descripcion'].errors?.['required']">Descripción breve es requerida.</div>
+                <div *ngIf="eventForm.controls['descripcion'].errors?.['whitespace']">Descripción breve no puede estar vacía.</div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <div class="event-organizers">
+            <p><strong>Organizadores</strong></p>
+            <ion-item>
+              <ion-label>Selecciona Organizadores</ion-label>
+              <ion-select formControlName="organizadores" multiple="true" okText="Ok" cancelText="Cancelar">
+                <ion-select>
+                  <ng-container *ngFor="let organizador of todosOrganizadores">
+                    <ion-select-option *ngIf="organizador.estado === 1" [value]="organizador">
+                      {{ organizador.nombre }} {{ organizador.apellidos }}
+                    </ion-select-option>
+                  </ng-container>
+                </ion-select>
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <div class="event-location">
+            <p><strong>Ubicación</strong></p>
+            <ion-card>
+              <ion-card-content>
+                <ion-input placeholder="Ubicación del Partido" formControlName="ubicacion"></ion-input>
+                <div *ngIf="eventForm.controls['ubicacion'].invalid && (eventForm.controls['ubicacion'].dirty || eventForm.controls['ubicacion'].touched)">
+                  <div *ngIf="eventForm.controls['ubicacion'].errors?.['required']">Ubicación es requerida.</div>
+                  <div *ngIf="eventForm.controls['ubicacion'].errors?.['whitespace']">Ubicación no puede estar vacía.</div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+ 
+
+          <div class="event-date">
+            <p><strong>Fecha Inicio</strong></p>
+            <ion-card>
+              <ion-card-content>
+                <ion-datetime display-format="DD MMM YYYY" picker-format="DD MMM YYYY" formControlName="fechaInicioEvento" [min]="minDate" [max]="maxDate"></ion-datetime>
+                <div *ngIf="eventForm.controls['fechaInicioEvento'].invalid && (eventForm.controls['fechaInicioEvento'].dirty || eventForm.controls['fechaInicioEvento'].touched)">
+                  <div *ngIf="eventForm.controls['fechaInicioEvento'].errors?.['required']">Fecha de inicio es requerida.</div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-description-container">
+        <h5 class="event-description-title"><strong>Descripción del Partido</strong></h5>
+        <ion-card>
+          <ion-card-content>
+            <ion-textarea rows="7" placeholder="Descripción completa del Partido" formControlName="descripcionLarga"></ion-textarea>
+            <div *ngIf="eventForm.controls['descripcionLarga'].invalid && (eventForm.controls['descripcionLarga'].dirty || eventForm.controls['descripcionLarga'].touched)">
+              <div *ngIf="eventForm.controls['descripcionLarga'].errors?.['required']">Descripción completa es requerida.</div>
+              <div *ngIf="eventForm.controls['descripcionLarga'].errors?.['whitespace']">Descripción completa no puede estar vacía.</div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4 mb-5">
+        <ion-button shape="round" type="submit" [disabled]="eventForm.invalid">Crear Partido</ion-button>
+      </div>
+    </form>
+  </ion-content>
+
+  <app-header></app-header>
+</ion-app>

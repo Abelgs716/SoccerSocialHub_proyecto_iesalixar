@@ -1,0 +1,53 @@
+<app-header></app-header>
+<ion-content>
+  <div class="background-content">
+    <br>
+    <ng-container *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 10, currentPage: p }">
+      <ion-card  class="custom-card">
+        <ion-card-header>
+          <ion-card-title>Solicitud de Acceso</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="upper-part">
+            <ion-label>
+              <div class="horizontal-layout">
+                <p><strong>Usuario:</strong> {{ usuario.nombre }}</p>
+                <p class="das"><strong>nombre de Usuario:</strong> {{ usuario.nombreUsuario }}</p>
+              </div>
+            </ion-label>
+          </div>
+
+          <div class="orange-divider"></div>
+
+          <div class="lower-part">
+            <ion-label>
+              <p><strong>Email:</strong> {{ usuario.email }}</p>
+            </ion-label>
+
+            <div class="action-buttons">
+              <ion-button fill="clear" class="colorsoccer" (click)="confirmarAceptacion(usuario.id)">
+                <ion-icon name="checkmark-circle"></ion-icon> <!-- Icono para aceptar -->
+              </ion-button>
+              
+              <ion-button fill="clear" color="dark" (click)="confirmarRechazo(usuario.id)">
+                <ion-icon name="close-circle"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+    <div class="pagination-wrapper">
+      <ion-button class="colorPaginacion" *ngIf="p > 2" (click)="changePage(1)"><<</ion-button>
+    
+      <ion-button class="colorPaginacion" *ngFor="let page of pagesToShow" [ngClass]="{'btn-destacar': page === p}" (click)="changePage(page)">
+        {{ page }}
+      </ion-button>
+      
+    
+      <ion-button class="colorPaginacion" *ngIf="p < totalPages - 1" (click)="changePage(totalPages)">>></ion-button>
+    </div>
+  </div>
+  
+</ion-content>

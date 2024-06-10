@@ -1,0 +1,59 @@
+.imagenFondo {
+  background-image: url('../../../assets/imgs/3c6a534c27bb179868a6ae93fa33f72d.jpeg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh; /* Cambiado a viewport height */
+  position: relative;
+}
+
+.div-centrado {
+  width: 90%; /* Ancho del 90% del contenedor superior */
+  max-height: 95%;
+  max-width: 410px; /* Máximo ancho de 300px */
+  height: auto; /* Cambiado a altura automática */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; // Reducido espacio interior
+
+}
+
+  .bienvenido {
+    margin-top: 10px; // Margen superior reducido
+    font-weight: bold;
+    text-align: center; // Centra el texto
+    font-size: 1.2rem; // Tamaño de fuente reducido
+    color: #000000; // Texto en negro
+  }
+
+  .formu {
+    width: 90%; // Ancho del 90%
+    max-width: 250px; // Máximo ancho de 250px
+    margin-top: 10px; // Margen superior reducido
+    margin-bottom: 10px; // Margen inferior reducido
+  }
+
+  .item1 {
+    margin-bottom: 10px; // Espacio entre elementos reducido
+  }
+
+  .preguntas {
+    font-size: smaller; // Tamaño de fuente más pequeño
+    color: #eb603f;
+  }
+
+  .labels {
+    margin-left: 4%;
+    font-weight: bold;
+    color: #000000; /* Texto negro */
+  }
+  .volver{
+    color: #ffffff;
+  }

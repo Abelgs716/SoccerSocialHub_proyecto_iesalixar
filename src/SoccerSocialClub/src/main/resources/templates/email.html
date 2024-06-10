@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 32px;
+            text-align: center;
+            color: #ff824f;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #ffffff;
+            background-color: #ff824f;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .msjauto {
+            color: #ffffff;
+            background-color: #00495e;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+         .motivo {
+            color: #00495e;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px;
+            margin-top: 0;
+        }
+
+        a.button {
+            background-color: transparent;
+            color: #ff824f;
+            border: 2px solid #ff824f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        a.button:hover {
+            background-color: #ff824f;
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer-image {
+            width: 30%;
+            max-width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h2 th:text="${titulo}"></h2>
+</header>
+<div class="container">
+    <p th:text="${cuerpo}"></p>
+    <p th:if="${motivo != null and !#strings.isEmpty(motivo)}" th:text="${motivo}" class="motivo"></p>
+    <a th:if="${url != null and !#strings.isEmpty(url)}" th:href="${url}" class="button">Acceder</a>
+    <p th:text="${finalMensaje}"></p>
+    <p class="msjauto">Mensaje automático, no responder a este correo.</p>
+</div>
+<footer>
+    <img class="footer-image" src="https://pbs.twimg.com/media/GPF4WZmXQAE0tRI?format=png&name=360x360" alt="Footer Image">
+</footer>
+</body>
+</html>

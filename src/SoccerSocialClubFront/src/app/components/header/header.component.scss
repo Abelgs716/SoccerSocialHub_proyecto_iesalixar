@@ -1,0 +1,105 @@
+ion-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+ion-fab-button {
+  background-color: #007bff;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+ion-fab-button:hover {
+  background-color: #ffffff;
+}
+
+ion-fab-button.fab-button-close-active {
+  --color: transparent;
+  --transition: opacity 0 ease-in;
+}
+
+.custom-icon1 {
+  --background: url('../../../assets/imgs/soccer-ball.png') no-repeat center center / contain;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon2 {
+  --background: url('../../../assets/imgs/home-outline.png') no-repeat center center / contain;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon3 {
+  --background: url('../../../assets/imgs/personIcon.png') no-repeat center center / contain;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon4 {
+  --background: url('../../../assets/imgs/calendar-outline.png') no-repeat center center / contain;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon5 {
+  --background: url('../../../assets/imgs/logout2.png') no-repeat center center / contain;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon6 {
+  //--background: url('../../../assets/imgs/administrador.png') no-repeat center center / contain;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon7 {
+  //--background: url('../../../assets/imgs/logout2.png') no-repeat center center / contain;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon8 {
+  --background: url('../../../assets/imgs/addIcon.png') no-repeat center center / contain;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon9 {
+  //--background: url('../../../assets/imgs/logout2.png') no-repeat center center / contain;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-block;
+  background-color: white;
+}
+
+.custom-icon10 {
+  //--background: url('../../../assets/imgs/logout2.png') no-repeat center center / contain;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-block;
+  background-color: white;
+}
+@media (max-width: 700) {
+  ion-fab {
+    bottom: 5vh;
+    right: 5vw;
+  }
+
+  ion-fab-button {
+    width: 17.5vw;
+    height: 17.5vw;
+  }
+}
