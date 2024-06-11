@@ -10,8 +10,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:8100")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedOrigins("http://localhost:8100", "http://elasticbeanstalk-us-east-1-300878465235.s3-website-us-east-1.amazonaws.com")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
 
