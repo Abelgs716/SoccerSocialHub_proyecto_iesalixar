@@ -91,7 +91,7 @@ public class EventoController {
         Evento evento = eventoService.getEventoById(id);
 
         if (evento != null) {
-            // Desasociar el evento de los trabajadores
+            // Desasociar el evento de los usuarios
             for (Usuario organizador : evento.getOrganizadores()) {
                 organizador.getEventosOrganizados().remove(evento);
             }

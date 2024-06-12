@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/api/evento/**").authenticated()
                                 .requestMatchers(HttpMethod.PUT, "/api/evento/**").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/api/evento/**").authenticated()
-                                // TRABAJADORES
+                                // USUARIO
                                 .requestMatchers(HttpMethod.GET, "/api/usuario/**").authenticated()
                                 .requestMatchers(HttpMethod.PUT, "/api/usuario/**").hasAnyAuthority(Role.ADMIN.toString())
                                 .requestMatchers(HttpMethod.DELETE, "/api/usuario/**").hasAnyAuthority(Role.ADMIN.toString())
