@@ -47,12 +47,13 @@ export class RegisterPage implements OnInit {
   }
  
   onlyLettersValidator(control: AbstractControl): { [key: string]: any } | null {
-    const onlyLettersRegex = /^[a-zA-Z]+$/;
+    // Expresión regular actualizada para permitir letras con tildes y otros caracteres específicos del español
+    const onlyLettersRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/;
     if (control.value && !onlyLettersRegex.test(control.value)) {
-      return { 'onlyLetters': true };
+        return { 'onlyLetters': true };
     }
     return null;
-  }
+}
  
   onlyLettersAndNumbersValidator(control: AbstractControl): { [key: string]: any } | null {
     const value = control.value.trim();
@@ -112,10 +113,12 @@ export class RegisterPage implements OnInit {
   async toast(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
-      duration: 5000
+      duration: 5000,
+      position: 'top' // Cambiado a 'top' para mostrar el toast en la parte superior
     });
     toast.present();
   }
+  
  
   register() {
     if (this.registerForm.invalid) {

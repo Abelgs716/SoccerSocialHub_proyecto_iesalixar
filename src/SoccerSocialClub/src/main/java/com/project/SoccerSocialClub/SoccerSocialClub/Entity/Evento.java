@@ -46,7 +46,7 @@ public class Evento {
     @ManyToMany
     private List<Usuario> usuariosInscritos;
 
-    @Column(name = "imagen", columnDefinition = "TEXT")
+    @Column(name = "imagen", columnDefinition = "LONGTEXT")
     private String imagen;
 
     @Column(name = "maxPersonas")
