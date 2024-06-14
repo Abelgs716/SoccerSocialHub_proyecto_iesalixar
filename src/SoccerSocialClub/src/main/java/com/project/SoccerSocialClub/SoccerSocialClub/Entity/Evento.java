@@ -2,6 +2,7 @@ package com.project.SoccerSocialClub.SoccerSocialClub.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -20,9 +21,10 @@ public class Evento {
     private long id;
 
     @Column(name = "idCreador")
-    @NotNull
+    @NotNull(message = "El ID del creador es obligatorio")
     private long idCreador;
 
+    @NotNull(message = "Debe haber al menos un organizador")
     @ManyToMany
     @JoinTable(
             name = "evento_organizadores",
@@ -32,16 +34,17 @@ public class Evento {
     private List<Usuario> organizadores;
 
     @Column(name = "nombreEvento")
-    @NotNull
+    @NotBlank(message = "El nombre del evento es obligatorio")
     private String nombreEvento;
 
     @Column(name = "fechaInicioEvento")
-    @NotNull
+    @NotNull(message = "La fecha de inicio del evento es obligatoria")
     private LocalDateTime fechaInicioEvento;
 
     @Column(name = "descripcion")
-    @NotNull
+    @NotBlank(message = "La descripción es obligatoria")
     private String descripcion;
+
     @JsonIgnore
     @ManyToMany
     private List<Usuario> usuariosInscritos;
@@ -50,19 +53,19 @@ public class Evento {
     private String imagen;
 
     @Column(name = "maxPersonas")
-    @NotNull
+    @NotNull(message = "El número máximo de personas es obligatorio")
     private int maxPersonas;
 
     //0 no confirmado 1 confirmado -1 deshabilitado
     @Column(name="estado")
-    @NotNull
+    @NotNull(message = "El estado es obligatorio")
     private int estado;
 
     @Column(name = "descripcionLarga")
-    @NotNull
+    @NotBlank(message = "La descripción larga es obligatoria")
     private String descripcionLarga;
 
     @Column(name = "ubicacion")
-    @NotNull
+    @NotBlank(message = "La ubicación es obligatoria")
     private String ubicacion;
 }

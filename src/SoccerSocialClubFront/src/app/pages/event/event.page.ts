@@ -178,7 +178,7 @@ export class EventPage implements OnInit {
       next: (trabajador) => {
         this.usuario = trabajador;
         console.log('Usuario cargado:', trabajador);
-        // Aquí podrías hacer algo con la información del trabajador, como almacenarlo o actualizar una vista.
+        // Aquí podrías hacer algo con la información del usuario, como almacenarlo o actualizar una vista.
       },
       error: (error) => {
         console.error('Error al cargar información del usuario', error);

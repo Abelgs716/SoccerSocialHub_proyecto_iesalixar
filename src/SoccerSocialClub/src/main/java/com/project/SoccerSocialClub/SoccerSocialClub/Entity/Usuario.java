@@ -3,7 +3,9 @@ package com.project.SoccerSocialClub.SoccerSocialClub.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,19 +29,20 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Email
-    @NotNull
+    @Email(message = "El correo electrónico debe ser válido")
+    @NotNull(message = "El correo electrónico es obligatorio")
     @Column(unique = true)
     private String email;
 
-    @NotNull
+    @NotBlank(message = "El nombre de usuario es obligatorio")
     @Column(unique = true)
     private String nombreUsuario;
 
-    @NotNull
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
 
-    @NotNull
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
 
