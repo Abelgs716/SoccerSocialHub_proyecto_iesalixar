@@ -115,7 +115,7 @@ public class EventoController {
 
             boolean yaInscrito = eventoService.yaInscritoEnEvento(email, idEvento);
             if (yaInscrito) {
-                return ResponseEntity.badRequest().body("El trabajador ya está inscrito en este evento.");
+                return ResponseEntity.badRequest().body("El usuario ya está inscrito en este evento.");
             } else {
                 eventoService.unirseEvento(idEvento, email);
                 return ResponseEntity.ok().build();
@@ -142,7 +142,7 @@ public class EventoController {
     }
 
     @GetMapping("/usuarios_inscritos/{id}")
-    public ResponseEntity<List<Usuario>>getTrabajadoresInscritosById(@PathVariable Long id){
+    public ResponseEntity<List<Usuario>>getUsuariosInscritosById(@PathVariable Long id){
         Evento evento=eventoService.getEventoById(id);
         return new ResponseEntity<>(evento.getUsuariosInscritos() ,HttpStatus.OK);
     }
@@ -150,9 +150,9 @@ public class EventoController {
     @PutMapping("updateEstado/{id}")
     public ResponseEntity<Evento>updateEstadoEvento(@Valid @PathVariable("id")Long id){
         Evento evento=eventoService.getEventoById(id);
-        Usuario trabajador= usuarioService.getUsuariorById(evento.getIdCreador());
+        Usuario usuario= usuarioService.getUsuariorById(evento.getIdCreador());
         evento.setEstado(1);
-        emailController.notificarConfirmacionEvento(evento,trabajador);
+        emailController.notificarConfirmacionEvento(evento,usuario);
         evento=eventoService.updateEvento(id,evento);
         return new ResponseEntity<>(evento,HttpStatus.OK);
     }
@@ -160,8 +160,8 @@ public class EventoController {
     @PutMapping("/rechazarEvento/{id}")
     public ResponseEntity<Evento>rechazarEvento(@PathVariable("id") Long id, String motivo) {
         Evento evento = eventoService.getEventoById(id);
-        Usuario trabajador= usuarioService.getUsuariorById(evento.getIdCreador());
-        emailController.mensajeRechazoEvento(evento,trabajador ,motivo);
+        Usuario usuario= usuarioService.getUsuariorById(evento.getIdCreador());
+        emailController.mensajeRechazoEvento(evento,usuario ,motivo);
         evento.setEstado(-1);
         evento=eventoService.updateEvento(id,evento);
         return new ResponseEntity<>(evento,HttpStatus.OK);

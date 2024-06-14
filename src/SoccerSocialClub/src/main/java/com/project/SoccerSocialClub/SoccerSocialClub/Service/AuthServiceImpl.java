@@ -32,15 +32,15 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public AuthResponse register(RegisterRequest request) {
-        var trabajador= Usuario.builder()
+        var usuario= Usuario.builder()
                 .email(request.getEmail())
                 .nombreUsuario(request.getNombreUsuario())
                 .nombre(request.getNombre())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        usuarioRepository.save(trabajador);
-        var jwtToken=jwtService.generateToken(trabajador);
+        usuarioRepository.save(usuario);
+        var jwtToken=jwtService.generateToken(usuario);
 
         emailController.notificarAdmins(usuarioService.getAllAdmins());
 
@@ -54,8 +54,8 @@ public class AuthServiceImpl implements AuthService{
                         request.getPassword()
                 )
         );
-        var trabajador= usuarioRepository.findTrabajadorByEmailOrDas(request.getNombreUsuario()).orElseThrow();
-        var jwtToken=jwtService.generateToken(trabajador);
+        var usuario= usuarioRepository.findUsuarioByEmailOrDas(request.getNombreUsuario()).orElseThrow();
+        var jwtToken=jwtService.generateToken(usuario);
         return AuthResponse.builder().token(jwtToken).build();
     }
 }

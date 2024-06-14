@@ -34,41 +34,41 @@ public class UsuarioService {
     }
 
     public Usuario getUsuariorById(Long id) {
-        Optional<Usuario> trabajadorOptional = usuarioRepository.findById(id);
-        return trabajadorOptional.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+        return usuarioOptional.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
     }
 
     public List<Usuario> getAllAdmins() {
         return usuarioRepository.findAllByRole(Role.ADMIN);
     }
 
-    public Usuario createUsuario(Usuario trabajador) {
+    public Usuario createUsuario(Usuario usuario) {
         try {
-            return usuarioRepository.save(trabajador);
+            return usuarioRepository.save(usuario);
         } catch (Exception e) {
             throw new CustomException("Error al crear el Usuario: " + e.getMessage());
         }
     }
 
     public void deleteUsuario(Long id) {
-        Optional<Usuario> optionalTrabajador = usuarioRepository.findById(id);
-        optionalTrabajador.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+        optionalUsuario.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
 
         usuarioRepository.deleteById(id);
     }
 
-    public Usuario updateUsuario(Long id, Usuario trabajador) {
-        Optional<Usuario> optionalTrabajador = usuarioRepository.findById(id);
-        optionalTrabajador.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
+    public Usuario updateUsuario(Long id, Usuario usuario) {
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+        optionalUsuario.orElseThrow(() -> new CustomException("El Usuario con ID " + id + " no existe"));
 
-        trabajador.setId(id);
+        usuario.setId(id);
 
-        return usuarioRepository.save(trabajador);
+        return usuarioRepository.save(usuario);
     }
 
     public Usuario getUsuarioByEmail(String email)
     {
-        Optional<Usuario> optionalTrabajador = usuarioRepository.findByEmail(email);
-        return optionalTrabajador.orElseThrow(() -> new CustomException("El Usuario con email " + email + " no existe"));
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
+        return optionalUsuario.orElseThrow(() -> new CustomException("El Usuario con email " + email + " no existe"));
     }
 }

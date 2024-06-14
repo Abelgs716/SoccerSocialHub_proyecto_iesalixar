@@ -23,69 +23,69 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>>getAlltrabajadores(){
+    public ResponseEntity<List<Usuario>>getAllUsuarios(){
         List<Usuario>usuario= usuarioService.getAllUsuarios();
         return new ResponseEntity<>(usuario,HttpStatus.OK);
     }
 
     @GetMapping("/nuevos")
-    public ResponseEntity<List<Usuario>>getAllTrabajadoresDesc(){
+    public ResponseEntity<List<Usuario>>getAllUsuariosDesc(){
         List<Usuario>usus= usuarioService.getAllUsuariosNuevos();
         return new ResponseEntity<>(usus, HttpStatus.OK);
     }
 
     @GetMapping("/antiguos")
-    public ResponseEntity<List<Usuario>>getAllTrabajadoresAsc(){
+    public ResponseEntity<List<Usuario>>getAllUsuariosAsc(){
         List<Usuario>usus= usuarioService.getAllUsuariosAntiguos();
         return new ResponseEntity<>(usus, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario>getTrabajadorById(@PathVariable("id")Long id){
-        Usuario trabajador= usuarioService.getUsuariorById(id);
-        return new ResponseEntity<>(trabajador,HttpStatus.OK);
+    public ResponseEntity<Usuario>getUsuarioById(@PathVariable("id")Long id){
+        Usuario usuario= usuarioService.getUsuariorById(id);
+        return new ResponseEntity<>(usuario,HttpStatus.OK);
     }
 
 
     @PostMapping
-    public ResponseEntity<Usuario>createTrabajador(@Valid @RequestBody Usuario trabajador){
+    public ResponseEntity<Usuario>createUsuario(@Valid @RequestBody Usuario usuario){
 
-        Usuario createdTrabajador= usuarioService.createUsuario(trabajador);
-        return new ResponseEntity<>(createdTrabajador,HttpStatus.CREATED);
+        Usuario createdUsuario= usuarioService.createUsuario(usuario);
+        return new ResponseEntity<>(createdUsuario,HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario>updateTrabajador(@Valid @PathVariable("id")Long id, @RequestBody Usuario trabajador){
-        Usuario updatedTrabajador= usuarioService.updateUsuario(id,trabajador);
-        return new ResponseEntity<>(updatedTrabajador,HttpStatus.OK);
+    public ResponseEntity<Usuario>updateUsuario(@Valid @PathVariable("id")Long id, @RequestBody Usuario usuario){
+        Usuario updatedUsuario= usuarioService.updateUsuario(id,usuario);
+        return new ResponseEntity<>(updatedUsuario,HttpStatus.OK);
     }
     @GetMapping("/email/{email}")
-    public ResponseEntity<Usuario>getTrabajadorByEmail(@PathVariable("email")String email){
-        Usuario trabajador=usuarioService.getUsuarioByEmail(email);
-        return new ResponseEntity<>(trabajador,HttpStatus.OK);
+    public ResponseEntity<Usuario>getUsuarioByEmail(@PathVariable("email")String email){
+        Usuario usuario=usuarioService.getUsuarioByEmail(email);
+        return new ResponseEntity<>(usuario,HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTrabajador(@PathVariable("id") Long id, String motivo) {
-        Usuario trabajador  = usuarioService.getUsuariorById(id);
+    public ResponseEntity<Void> deleteUsuario(@PathVariable("id") Long id, String motivo) {
+        Usuario usuario  = usuarioService.getUsuariorById(id);
 
 
-        emailController.mensajeRechazo(trabajador, motivo);
+        emailController.mensajeRechazo(usuario, motivo);
 
         usuarioService.deleteUsuario(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("updateEstado/{id}")
-    public ResponseEntity<Usuario>updateEstadoTrabajador(@Valid @PathVariable("id")Long id){
-        Usuario trabajador= usuarioService.getUsuariorById(id);
+    public ResponseEntity<Usuario>updateEstadoUsuario(@Valid @PathVariable("id")Long id){
+        Usuario usuario= usuarioService.getUsuariorById(id);
 
-        trabajador.setEstado(1);
+        usuario.setEstado(1);
 
-        emailController.notificarConfirmacionCuenta(trabajador);
+        emailController.notificarConfirmacionCuenta(usuario);
 
-        trabajador = usuarioService.updateUsuario(id, trabajador);
+        usuario = usuarioService.updateUsuario(id, usuario);
 
-        return new ResponseEntity<>(trabajador,HttpStatus.OK);
+        return new ResponseEntity<>(usuario,HttpStatus.OK);
     }
 }

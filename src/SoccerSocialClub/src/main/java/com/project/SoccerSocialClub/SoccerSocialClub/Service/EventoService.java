@@ -88,11 +88,11 @@ public class EventoService {
         Evento evento = eventoRepository.findById(idEvento)
                 .orElseThrow(() -> new CustomException("El evento con ID " + idEvento + " no existe"));
 
-        // Obtener el trabajador por su email
+        // Obtener el usuario por su email
         Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new CustomException("El trabajador con email " + email + " no existe"));
+                .orElseThrow(() -> new CustomException("El usuario con email " + email + " no existe"));
 
-        // Agregar el trabajador al evento
+        // Agregar el usuario al evento
         evento.getUsuariosInscritos().add(usuario);
         usuario.getEventosInscritos().add(evento);
         eventoRepository.save(evento);
@@ -120,11 +120,11 @@ public class EventoService {
         Evento evento = eventoRepository.findById(idEvento)
                 .orElseThrow(() -> new CustomException("El evento con ID " + idEvento + " no existe"));
 
-        // Obtener el trabajador por su email
+        // Obtener el usuario por su email
         Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new CustomException("El trabajador con email " + email + " no existe"));
+                .orElseThrow(() -> new CustomException("El usuario con email " + email + " no existe"));
 
-        // Eliminar el trabajador del evento
+        // Eliminar el usuario del evento
         evento.getUsuariosInscritos().remove(usuario);
         usuario.getEventosInscritos().remove(evento);
 
