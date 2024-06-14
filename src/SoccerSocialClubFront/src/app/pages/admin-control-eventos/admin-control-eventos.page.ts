@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminControlEventosPage implements OnInit {
   eventos: Evento[] = [];
-  trabajadoresMap: { [key: number]: Usuario | undefined } = {};
+  usuariosMap: { [key: number]: Usuario | undefined } = {};
   p: number = 1; // Variable para la paginación actual
   totalPages: number = 0; // Total de páginas
 
@@ -35,11 +35,11 @@ export class AdminControlEventosPage implements OnInit {
         }
 
         this.eventos.forEach(evento => {
-          if (!this.trabajadoresMap[evento.idCreador]) {
-            this.trabajadoresMap[evento.idCreador] = undefined;
+          if (!this.usuariosMap[evento.idCreador]) {
+            this.usuariosMap[evento.idCreador] = undefined;
           }
-          this.getTrabajadorId(evento.idCreador).subscribe(trabajador => {
-            this.trabajadoresMap[evento.idCreador] = trabajador;
+          this.getUsuarioId(evento.idCreador).subscribe(usuario => {
+            this.usuariosMap[evento.idCreador] = usuario;
           });
         });
       },
@@ -49,7 +49,7 @@ export class AdminControlEventosPage implements OnInit {
     });
   }
 
-  getTrabajadorId(idCreador: number) {
+  getUsuarioId(idCreador: number) {
     return this.adminService.getUsuarioId(idCreador);
   }
 

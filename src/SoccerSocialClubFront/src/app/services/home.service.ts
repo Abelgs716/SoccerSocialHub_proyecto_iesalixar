@@ -62,7 +62,7 @@ export class HomeService {
     }
   }
 
-  getListaTrabajadoresInscritosById(id: number): Observable<Usuario[]> {
+  getListaUsuariosInscritosById(id: number): Observable<Usuario[]> {
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -140,13 +140,13 @@ export class HomeService {
     return throwError(error);
   }
 
-  getTrabajadorEmail(email: string): Observable<Usuario>{
+  getUsuarioEmail(email: string): Observable<Usuario>{
     const headers = this.getHeaders();
     return this.http.get<Usuario>(`${environment.apiURL}/usuario/email/${email}`, { headers });
   }
 
-  isTrabajadorInscrito(idEvento: number, email: string): Observable<boolean> {
-    return this.getListaTrabajadoresInscritosById(idEvento).pipe(
+  isUsuarioInscrito(idEvento: number, email: string): Observable<boolean> {
+    return this.getListaUsuariosInscritosById(idEvento).pipe(
         map((usuarios: Usuario[]) => usuarios.some(usuario => usuario.email === email)),
         catchError(err => {
             console.error('Error al verificar la inscripción', err);

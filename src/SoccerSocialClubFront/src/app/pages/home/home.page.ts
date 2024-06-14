@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   ) { }
  
   ngOnInit() {
-    this.getTrabajador();
+    this.getUsuario();
     this.getEventos();
   }
  
@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
       next: (data) => {
         this.eventos = data.filter(evento => evento.estado === 1);
         this.totalPages = Math.ceil(this.eventos.length / 5);
-        this.ajustarListasTrabajadoresInscritos();
+        this.ajustarListasUsuariosInscritos();
         if (this.eventos.length > 0 && this.eventos.length < (this.p - 1) * 5 + 1) {
           this.p = Math.max(1, this.p - 1);
         } else if (this.eventos.length === 0 && this.p > 1) {
@@ -45,11 +45,11 @@ export class HomePage implements OnInit {
     });
   }
  
-  ajustarListasTrabajadoresInscritos(): void {
+  ajustarListasUsuariosInscritos(): void {
     for (let evento of this.eventos) {
-      this.homeService.getListaTrabajadoresInscritosById(evento.id).subscribe(
+      this.homeService.getListaUsuariosInscritosById(evento.id).subscribe(
         (data: Usuario[]) => {
-          evento.trabajadoresInscritos = data;
+          evento.usuariosInscritos = data;
         },
         error => {
           console.log(error);
@@ -58,7 +58,7 @@ export class HomePage implements OnInit {
     }
   }
  
-  getTrabajador() {
+  getUsuario() {
     const email = this.authService.getUserId();
     this.email = email;
   }
@@ -227,19 +227,19 @@ export class HomePage implements OnInit {
     return pages;
   }
  
-  checkTrabajadorInscrito(evento: Evento): boolean {
-    return !!this.email && !!evento.trabajadoresInscritos && evento.trabajadoresInscritos.some(trabajador => trabajador.email === this.email);
+  checkUsuarioInscrito(evento: Evento): boolean {
+    return !!this.email && !!evento.usuariosInscritos && evento.usuariosInscritos.some(usuario => usuario.email === this.email);
   }
  
   isEventoLleno(evento: Evento): boolean {
-    // Verificamos que trabajadoresInscritos no sea undefined
-    if (!evento.trabajadoresInscritos) {
+    // Verificamos que usuariosInscritos no sea undefined
+    if (!evento.usuariosInscritos) {
       return false;
     }
-    console.log(evento.trabajadoresInscritos.length);
+    console.log(evento.usuariosInscritos.length);
    
-    // Si la lista de trabajadoresInscritos está vacía, consideramos que el evento no está lleno
-    if (evento.trabajadoresInscritos.length === 0) {
+    // Si la lista de usuariosInscritos está vacía, consideramos que el evento no está lleno
+    if (evento.usuariosInscritos.length === 0) {
       return false;
     }
    
@@ -248,8 +248,8 @@ export class HomePage implements OnInit {
       return false;
     }
    
-    // Comparamos el número de trabajadores inscritos con el máximo permitido
-    return evento.trabajadoresInscritos.length == evento.maxPersonas;
+    // Comparamos el número de usuarios inscritos con el máximo permitido
+    return evento.usuariosInscritos.length == evento.maxPersonas;
   }
  
   recargarPagina() {

@@ -12,5 +12,5 @@ export interface Evento {
   imagen: string;
   maxPersonas: number;
   organizadores: Usuario[];
-  trabajadoresInscritos: Usuario[];
+  usuariosInscritos: Usuario[];
 }

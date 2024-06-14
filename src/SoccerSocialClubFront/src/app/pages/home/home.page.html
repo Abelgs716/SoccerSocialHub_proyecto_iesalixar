@@ -44,11 +44,13 @@
         <div class="text-container">
           <h2>{{ evento.nombreEvento }}</h2>
           <p>{{ evento.descripcion }}</p>
+          <p>Fecha: {{ evento.fechaInicioEvento | date: 'dd/MM/yyyy HH:mm' }}</p>
+
           <div class="button-container">
-            <ion-button *ngIf="checkTrabajadorInscrito(evento)" class="small-button colorN" (click)="quitarEvento(evento.id)">
+            <ion-button *ngIf="checkUsuarioInscrito(evento)" class="small-button colorN" (click)="quitarEvento(evento.id)">
               Desapuntarse
             </ion-button>
-            <ion-button *ngIf="!checkTrabajadorInscrito(evento)" class="small-button colorN" (click)="anadirEvento(evento.id)">
+            <ion-button *ngIf="!checkUsuarioInscrito(evento)" class="small-button colorN" (click)="anadirEvento(evento.id)">
               Apuntarse
             </ion-button>
             <ion-button class="small-button colorN" [routerLink]="['/detalles-evento', evento.id]">Ver más</ion-button>

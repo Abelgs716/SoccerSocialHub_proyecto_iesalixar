@@ -56,7 +56,7 @@ export class EventPage implements OnInit {
       }
     );
 
-    this.getTrabajador();
+    this.getUsuario();
 
     // Escuchar cambios en el campo de fecha
     this.eventForm.get('fechaInicioEvento')?.valueChanges.subscribe(date => {
@@ -71,11 +71,11 @@ export class EventPage implements OnInit {
     }
   }
 
-  getTrabajador(){
+  getUsuario(){
     const email = this.authService.getUserId();
     this.email = email;  
     if (this.email) {
-      this.getTrabajadorEmail(this.email);
+      this.getUsuarioEmail(this.email);
     } else {
       console.error('No se pudo obtener el email del usuario.');
     }
@@ -109,7 +109,7 @@ export class EventPage implements OnInit {
         nombreEvento: this.eventForm.value.nombreEvento.trim(),
         descripcion: this.eventForm.value.descripcion.trim(),
         descripcionLarga: this.eventForm.value.descripcionLarga.trim(),
-        trabajadoresInscritos: [],
+        usuariosInscritos: [],
         imagen: this.eventForm.value.imagenCodificada,
         maxPersonas: this.eventForm.value.maxPersonas,
         ubicacion: this.eventForm.value.ubicacion.trim(),
@@ -173,11 +173,11 @@ export class EventPage implements OnInit {
     }
   }
   
-  getTrabajadorEmail(email: string): void {
-    this.homeService.getTrabajadorEmail(email).subscribe({
-      next: (trabajador) => {
-        this.usuario = trabajador;
-        console.log('Usuario cargado:', trabajador);
+  getUsuarioEmail(email: string): void {
+    this.homeService.getUsuarioEmail(email).subscribe({
+      next: (usuario2) => {
+        this.usuario = usuario2;
+        console.log('Usuario cargado:', usuario2);
         // Aquí podrías hacer algo con la información del usuario, como almacenarlo o actualizar una vista.
       },
       error: (error) => {

@@ -13,7 +13,7 @@
           <div class="content-area">
             <img [src]="evento.imagen" alt="Imagen del evento" class="event-image"/>
             <div class="text-content">
-              <p class="event-author">Autor: {{ trabajadoresMap[evento.idCreador]?.nombre }} {{ trabajadoresMap[evento.idCreador]?.apellidos }}</p>
+              <p class="event-author">Autor: {{ usuariosMap[evento.idCreador]?.nombre }} {{ usuariosMap[evento.idCreador]?.apellidos }}</p>
               <p class="event-attendees"><ion-icon name="people"></ion-icon> {{ evento.maxPersonas }}</p>
               <p class="event-description">{{ evento.descripcion }}</p>
               <p>{{ evento.descripcionLarga }}</p>

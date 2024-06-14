@@ -24,7 +24,7 @@ export class DetallesEventoPage implements OnInit {
     imagen: '',
     maxPersonas: 0,
     organizadores: [],
-    trabajadoresInscritos: []
+    usuariosInscritos: []
   };
  
   organizadores: Usuario[] = [];
@@ -45,13 +45,13 @@ export class DetallesEventoPage implements OnInit {
  
   ngOnInit() {
     this.getEventoById(this.id);
-    this.getTrabajador();
-    this.getTrabajadoresInscritos(this.id);
+    this.getUsuario();
+    this.getUsuariosInscritos(this.id);
     this.getOrganizadores(this.id);
     this.verificarInscripcion();
   }
  
-  getTrabajador() {
+  getUsuario() {
     this.email = this.authService.getUserId();
   }
  
@@ -82,7 +82,7 @@ export class DetallesEventoPage implements OnInit {
       return;
     }
  
-    this.homeService.getTrabajadorEmail(this.email).subscribe(
+    this.homeService.getUsuarioEmail(this.email).subscribe(
       (usuario: Usuario) => {
         if (usuario.id !== this.evento.idCreador) {
           Swal.fire({
@@ -132,7 +132,7 @@ export class DetallesEventoPage implements OnInit {
         });
       },
       error => {
-        console.error('Error al obtener el trabajador', error);
+        console.error('Error al obtener el usuario', error);
         Swal.fire({
           title: 'Error!',
           text: 'Hubo un problema al verificar los permisos.',
@@ -161,7 +161,7 @@ export class DetallesEventoPage implements OnInit {
       return;
     }
  
-    this.homeService.getTrabajadorEmail(this.email).subscribe(
+    this.homeService.getUsuarioEmail(this.email).subscribe(
       (usuario: Usuario) => {
         this.isCreator = usuario.id === this.evento.idCreador;
       },
@@ -212,7 +212,7 @@ export class DetallesEventoPage implements OnInit {
                 "success"
               );
               this.getEventoById(this.id);
-              this.getTrabajadoresInscritos(this.id);
+              this.getUsuariosInscritos(this.id);
               this.verificarInscripcion();
             },
             error => {
@@ -277,7 +277,7 @@ export class DetallesEventoPage implements OnInit {
                 "success"
               );
               this.getEventoById(this.id);
-              this.getTrabajadoresInscritos(this.id);
+              this.getUsuariosInscritos(this.id);
               this.verificarInscripcion();
             },
             error => {
@@ -299,11 +299,11 @@ export class DetallesEventoPage implements OnInit {
     });
   }
  
-  getTrabajadoresInscritos(idEvento: number) {
-    this.homeService.getListaTrabajadoresInscritosById(idEvento).subscribe(
+  getUsuariosInscritos(idEvento: number) {
+    this.homeService.getListaUsuariosInscritosById(idEvento).subscribe(
       (data: Usuario[]) => {
         this.usuarios = data;
-        this.evento.trabajadoresInscritos = data;
+        this.evento.usuariosInscritos = data;
       },
       error => {
         console.log(error);
@@ -313,21 +313,21 @@ export class DetallesEventoPage implements OnInit {
  
   verificarInscripcion() {
     if (this.email) {
-      this.homeService.isTrabajadorInscrito(this.id, this.email).subscribe(isInscrito => {
+      this.homeService.isUsuarioInscrito(this.id, this.email).subscribe(isInscrito => {
         this.isInscrito = isInscrito;
       });
     }
   }
  
   isEventoLleno(): boolean {
-    // Verificamos que trabajadoresInscritos no sea undefined
-    if (!this.evento.trabajadoresInscritos) {
+    // Verificamos que UsuarioInscrito no sea undefined
+    if (!this.evento.usuariosInscritos) {
       return false;
     }
-    console.log(this.evento.trabajadoresInscritos.length);
+    console.log(this.evento.usuariosInscritos.length);
    
-    // Si la lista de trabajadoresInscritos está vacía, consideramos que el evento no está lleno
-    if (this.evento.trabajadoresInscritos.length === 0) {
+    // Si la lista de UsuarioInscrito está vacía, consideramos que el evento no está lleno
+    if (this.evento.usuariosInscritos.length === 0) {
       return false;
     }
    
@@ -336,8 +336,8 @@ export class DetallesEventoPage implements OnInit {
       return false;
     }
    
-    // Comparamos el número de trabajadores inscritos con el máximo permitido
-    return this.evento.trabajadoresInscritos.length == this.evento.maxPersonas;
+    // Comparamos el número de usuarios inscritos con el máximo permitido
+    return this.evento.usuariosInscritos.length == this.evento.maxPersonas;
   }
  
   recargarPagina() {

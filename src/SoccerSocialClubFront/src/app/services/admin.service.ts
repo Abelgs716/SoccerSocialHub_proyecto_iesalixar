@@ -22,7 +22,7 @@ export class AdminService {
     return headers;
   }
  
-  //PARA TRABAJADORES
+  //PARA USUARIOS
 
   getUsuarios(): Observable<Usuario[]> {
     const headers = this.getHeaders();

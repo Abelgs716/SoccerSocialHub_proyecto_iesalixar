@@ -19,11 +19,11 @@ export class AdminPage implements OnInit {
   constructor(private adminService: AdminService, private authService: AuthServiceService, private router: Router) { }
  
   ngOnInit(): void {
-    this.getTrabajadores();
+    this.getUsuarios();
   }
 
 
-  getTrabajadores(): void {
+  getUsuarios(): void {
     this.adminService.getUsuarios().subscribe({
       next: (data) => {
         // Filtrar eventos según su estado
@@ -79,11 +79,11 @@ export class AdminPage implements OnInit {
   }
  
   // METODO UPDATE ESTADO
-  updateEstadoTrabajador(id: number | undefined): void {
+  updateEstadoUsuario(id: number | undefined): void {
     if (id !== undefined) {
       this.adminService.updateEstadoUsuario(id).subscribe(
         () => {
-          this.getTrabajadores();
+          this.getUsuarios();
         },
         error => {
           console.error(error);
@@ -92,11 +92,11 @@ export class AdminPage implements OnInit {
     }
   }
  
-  eliminarTrabajador(id: number | undefined, motivo: string): void {
+  eliminarUsuario(id: number | undefined, motivo: string): void {
     if (id !== undefined) {
       this.adminService.deleteUsuario(id, motivo).subscribe(
         () => {
-          this.getTrabajadores();
+          this.getUsuarios();
         },
         error => {
           console.error(error);
@@ -131,7 +131,7 @@ export class AdminPage implements OnInit {
           "El usuario ha sido aceptado correctamente.",
           "success"
         );
-        this.updateEstadoTrabajador(id);
+        this.updateEstadoUsuario(id);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           "Cancelado",
@@ -191,7 +191,7 @@ export class AdminPage implements OnInit {
             "El usuario ha sido rechazado correctamente.",
             "success"
           );
-          this.eliminarTrabajador(id, motivoRechazo);
+          this.eliminarUsuario(id, motivoRechazo);
         } else {
           swalWithBootstrapButtons.fire(
             "Campo obligatorio",
