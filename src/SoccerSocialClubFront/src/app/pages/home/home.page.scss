@@ -21,7 +21,7 @@
   height: 100%;
   background-repeat: no-repeat;
   max-height: 500px;
-  background-size: 50% auto; /* Cambia a 'contain' para que la imagen se ajuste sin recortarse */
+  background-size: 100% auto; /* Cambia a 'contain' para que la imagen se ajuste sin recortarse */
   background-position: center; /* Alinea la imagen a la izquierda */
   display: flex;
   align-items: center; /* Centra verticalmente el contenido */
