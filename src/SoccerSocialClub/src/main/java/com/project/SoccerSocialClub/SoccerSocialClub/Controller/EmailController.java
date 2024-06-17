@@ -32,7 +32,7 @@ public class EmailController {
             emailDTO.setTitulo("Estimado " + admin.getNombre() +", tiene una solicitud nueva de creación de cuenta.");
             emailDTO.setCuerpo("Para confirmar o rechazar la solicitud acceda a la app.");
             emailDTO.setDestinatario(admin.getEmail());
-            emailService.enviarCorreo(emailDTO, emailDTO.getUrlAdmin());
+            emailService.enviarCorreo(emailDTO, emailDTO.getUrlAdminDesp());
         }
     }
     public void notificarAdminsEvento(List<Usuario> admins) {
@@ -41,7 +41,7 @@ public class EmailController {
             emailDTO.setTitulo("Estimado " + admin.getNombre() + ", tiene una solicitud nueva de creación de evento.");
             emailDTO.setCuerpo("Para confirmar o rechazar la solicitud acceda a la app.");
             emailDTO.setDestinatario(admin.getEmail());
-            emailService.enviarCorreo(emailDTO, emailDTO.getUrlAdminEventos());
+            emailService.enviarCorreo(emailDTO, emailDTO.getUrlAdminEventosDes());
         }
     }
     public void recuperarPassword(Usuario usuario) {
@@ -57,7 +57,7 @@ public class EmailController {
         emailDTO.setTitulo("Estimado " + usuario.getNombre() + ", tiene una notificación nueva.");
         emailDTO.setCuerpo("Su cuenta ha sido revisada y activada por parte de administradores de " + emailDTO.getNombreApp() + ", ya puede acceder a su cuenta.");
         emailDTO.setDestinatario(usuario.getEmail());
-        emailService.enviarCorreo(emailDTO, emailDTO.getUrlLogin());
+        emailService.enviarCorreo(emailDTO, emailDTO.getUrlLoginDes());
     }
 
     public void mensajeRechazoEvento(Evento evento, Usuario usuario, String motivo)
@@ -74,7 +74,7 @@ public class EmailController {
         emailDTO.setTitulo("Estimado " + usuario.getNombre() +", tiene una notificación nueva.");
         emailDTO.setCuerpo("Su evento "+ evento.getNombreEvento()+" ha sido revisado y activado por parte de administradores de " + emailDTO.getNombreApp() + ".");
         emailDTO.setDestinatario(usuario.getEmail());
-        emailService.enviarCorreo(emailDTO, emailDTO.getUrlLogin());
+        emailService.enviarCorreo(emailDTO, emailDTO.getUrlLoginDes());
     }
 
 
