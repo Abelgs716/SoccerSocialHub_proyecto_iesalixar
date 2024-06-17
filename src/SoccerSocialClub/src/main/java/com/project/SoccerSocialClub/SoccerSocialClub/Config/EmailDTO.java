@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor
 public class EmailDTO {
-    private String nombreApp = "SoccerSocialClub";
-    private String asunto = "Tiene una notificación nueva en SoccerSocialClub.";
+    private String nombreApp = "SoccerSocialHub";
+    private String asunto = "Tiene una notificación nueva en SoccerSocialHub.";
     private String finalMensaje = "Atentamente, " + nombreApp;
     private String urlAdmin = "http://localhost:8100/admin";
     private String UrlAdminEventos = "http://localhost:8100/admin-control-eventos";
